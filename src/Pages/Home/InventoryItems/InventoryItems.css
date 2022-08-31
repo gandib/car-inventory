@@ -3,3 +3,9 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
+
+.manageInventory-btn a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}

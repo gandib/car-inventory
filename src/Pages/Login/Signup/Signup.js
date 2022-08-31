@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import './Signup.css';
 import { useCreateUserWithEmailAndPassword, useSendPasswordResetEmail, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';

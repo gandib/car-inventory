@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import useInventory from '../../../hooks/useInventory';
 import './InventoryItems.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 
 const InventoryItems = () => {
@@ -33,6 +33,9 @@ const InventoryItems = () => {
                         </Card.Footer>
                     </Card>)
                 }
+            </div>
+            <div className='mt-5 mb-5 manageInventory-btn'>
+                <Link to='/manageinventories'>Manage Inventories</Link>
             </div>
         </div>
     );
