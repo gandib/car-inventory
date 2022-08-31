@@ -1,13 +1,13 @@
 import React from 'react';
 import PageTitle from '../Shared/PageTitle/PageTitle';
 
-const AddItem = () => {
+const MyItems = () => {
     return (
         <div>
-            <PageTitle title='Add Items'></PageTitle>
-            <h2>Add Items</h2>
+            <PageTitle title='My Items'></PageTitle>
+            <h2>My Items</h2>
         </div>
     );
 };
 
-export default AddItem;
+export default MyItems;

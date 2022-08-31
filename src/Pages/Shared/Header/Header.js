@@ -28,7 +28,7 @@ const Header = () => {
                             <Nav className="me-auto">
                                 <Nav.Link className='text-black' as={CustomLink} to="/home">Home</Nav.Link>
 
-                                <Nav.Link className='text-black' as={CustomLink} to="/donation">Manage Inventories</Nav.Link>
+                                <Nav.Link className='text-black' as={CustomLink} to="/manageinventories">Manage Inventories</Nav.Link>
 
                                 <Nav.Link className='text-black' as={CustomLink} to="/blog">Blog</Nav.Link>
                             </Nav>
@@ -38,11 +38,11 @@ const Header = () => {
                                     user ?
                                         <>
 
-                                            <Nav.Link className='text-black' as={CustomLink} to="/login">Manage Items</Nav.Link>
+                                            <Nav.Link className='text-black' as={CustomLink} to="/manageitems">Manage Items</Nav.Link>
 
-                                            <Nav.Link className='text-black' as={CustomLink} to="/login">Add Item</Nav.Link>
+                                            <Nav.Link className='text-black' as={CustomLink} to="/additem">Add Item</Nav.Link>
 
-                                            <Nav.Link className='text-black' as={CustomLink} to="/login">My Items</Nav.Link>
+                                            <Nav.Link className='text-black' as={CustomLink} to="/myitems">My Items</Nav.Link>
 
                                             <button onClick={logout} className='btn btn-danger'>Logout</button>
                                         </>
