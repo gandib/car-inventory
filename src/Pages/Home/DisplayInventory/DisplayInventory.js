@@ -1,22 +1,17 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import useInventory from '../../../hooks/useInventory';
-import './InventoryItems.css';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../Shared/Loading/Loading';
+import useInventory from '../../../hooks/useInventory';
 
-const InventoryItems = () => {
+const DisplayInventory = () => {
     const [products] = useInventory([]);
-    const navigate = useNavigate();
-    const handleInventoryDetail = (id) => {
-        navigate(`/inventory/${id}`);
+
+    const handleDelivered = id => {
+        const proceed = window.confirm('Are you sure ')
     }
-    if (products) {
-        <Loading></Loading>
-    }
+
     return (
         <div>
-            <h2 className='container text-start mb-2'>Inventory</h2>
             <div className='container inventoryItems-container'>
                 {
                     products.slice(0, 6).map(product => <Card key={product._id}>
@@ -29,7 +24,7 @@ const InventoryItems = () => {
                             <Card.Text>Supplier: {product.supplier}</Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                            <small className="text-muted"><button onClick={() => handleInventoryDetail(product._id)} className='btn btn-primary w-100'>Update Stock</button></small>
+                            <small className="text-muted"><button onClick={() => handleDelivered(product._id)} className='btn btn-primary w-100'>Delivered</button></small>
                         </Card.Footer>
                     </Card>)
                 }
@@ -38,4 +33,4 @@ const InventoryItems = () => {
     );
 };
 
-export default InventoryItems;
+export default DisplayInventory;
