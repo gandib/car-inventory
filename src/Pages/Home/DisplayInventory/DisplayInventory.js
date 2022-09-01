@@ -11,13 +11,14 @@ import Button from 'react-bootstrap/Button';
 const DisplayInventory = () => {
     const { inventoryId } = useParams();
     const [quantity, setQuantity] = useState();
+    const [increaseQuantity, setIncreaseQuantity] = useState();
     const [product, setProduct] = useState({});
     useEffect(() => {
         const url = `http://localhost:5000/inventory/${inventoryId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));
-    }, [quantity]);
+    }, [quantity, increaseQuantity]);
 
     const handleDelivered = () => {
         let quantity = product?.quantity;
@@ -46,7 +47,7 @@ const DisplayInventory = () => {
         const addQuantity = parseInt(event.target.quantity.value);
         console.log(addQuantity)
         const quantity = product?.quantity + addQuantity;
-        setQuantity(quantity);
+        setIncreaseQuantity(quantity);
         console.log(addQuantity, quantity)
         const updatedInventory = { quantity: parseInt(quantity) };
         const url = `http://localhost:5000/inventory/${inventoryId}`;

@@ -1,0 +1,15 @@
+.add-item-container input {
+    width: 50%;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.add-item-btn {
+    font-weight: 700;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+}
