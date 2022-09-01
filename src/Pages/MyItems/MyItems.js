@@ -14,25 +14,25 @@ const MyItems = () => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
 
-    // useEffect(() => {
-    //     const email = user?.email;
-    //     const getMyItems = async () => {
-    //         const url = `http://localhost:5000/inventory?email=${email}`;
-    //         try {
-    //             const { data } = await axiosPrivate.get(url);
-    //             setProducts(data);
-    //         }
-    //         catch (error) {
-    //             console.log(error.message)
-    //             if (error.response.status === 401 || error.response.status === 403) {
-    //                 signOut(auth);
-    //                 navigate('/login');
-    //             }
-    //         }
-    //     }
-    //     getMyItems();
+    useEffect(() => {
+        const email = user?.email;
+        const getMyItems = async () => {
+            const url = `http://localhost:5000/inventoryByEmail?email=${email}`;
+            try {
+                const { data } = await axiosPrivate.get(url);
+                setProducts(data);
+            }
+            catch (error) {
+                console.log(error.message)
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login');
+                }
+            }
+        }
+        getMyItems();
 
-    // }, [user]);
+    }, [user]);
 
     const handleDeleteItem = id => {
         const proceed = window.confirm("Are you sure to delete?");

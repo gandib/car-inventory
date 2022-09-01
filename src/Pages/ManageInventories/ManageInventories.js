@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './ManageInventories.css';
 import { useNavigate } from 'react-router-dom';
 import useInventory from '../../hooks/useInventory';
 import PageTitle from '../Shared/PageTitle/PageTitle';
 import Card from 'react-bootstrap/Card';
+import { useEffect } from 'react';
 
 const ManageInventories = () => {
+    const [pageCount, setPageCount] = useState(0);
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(12);
     const [products, setProducts] = useInventory([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/inventory?page=${page}&size=${size}`)
+            .then(res => res.json())
+            .then(data => setProducts(data));
+    }, [page, size]);
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/inventoryCount')
+            .then(res => res.json())
+            .then(data => {
+                const count = data.count;
+                const pages = Math.ceil(count / size);
+                setPageCount(pages);
+            });
+    }, [size]);
+
 
     const handleDeleteItem = id => {
         const proceed = window.confirm("Are you sure to delete?");
@@ -45,6 +68,20 @@ const ManageInventories = () => {
                 }
             </div>
             <div className='mb-5'><button className='btn btn-primary' onClick={() => navigate('/additem')}>Add New Item</button></div>
+
+            <div className='pagination'>
+                {
+                    [...Array(pageCount).keys()].map(number => <button className={page === number ? 'selected' : ''} onClick={() => setPage(number)}>
+                        {number + 1}
+                    </button>)
+                }
+                <select onChange={e => setSize(e.target.value)}>
+                    <option value="6">6</option>
+                    <option value="12" selected>12</option>
+                    <option value="15">15</option>
+                    <option value="21">21</option>
+                </select>
+            </div>
         </div>
     );
 };
