@@ -19,7 +19,7 @@ const MyItems = () => {
     useEffect(() => {
         const email = user?.email;
         const getMyItems = async () => {
-            const url = `http://localhost:5000/inventoryByEmail?email=${email}`;
+            const url = `https://calm-forest-65142.herokuapp.com/inventoryByEmail?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
                 setProducts(data);
@@ -39,7 +39,7 @@ const MyItems = () => {
     const handleDeleteItem = id => {
         const proceed = window.confirm("Are you sure to delete?");
         if (proceed) {
-            const url = `http://localhost:5000/inventory/${id}`;
+            const url = `https://calm-forest-65142.herokuapp.com/inventory/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

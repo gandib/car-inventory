@@ -14,7 +14,7 @@ const DisplayInventory = () => {
     const [increaseQuantity, setIncreaseQuantity] = useState();
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${inventoryId}`;
+        const url = `https://calm-forest-65142.herokuapp.com/inventory/${inventoryId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));
@@ -27,7 +27,7 @@ const DisplayInventory = () => {
             setQuantity(quantity);
         }
         const updatedInventory = { quantity: quantity };
-        const url = `http://localhost:5000/inventory/${inventoryId}`;
+        const url = `https://calm-forest-65142.herokuapp.com/inventory/${inventoryId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -50,7 +50,7 @@ const DisplayInventory = () => {
         setIncreaseQuantity(quantity);
         console.log(addQuantity, quantity)
         const updatedInventory = { quantity: parseInt(quantity) };
-        const url = `http://localhost:5000/inventory/${inventoryId}`;
+        const url = `https://calm-forest-65142.herokuapp.com/inventory/${inventoryId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
