@@ -11,8 +11,8 @@ const InventoryItems = () => {
     const handleInventoryDetail = (id) => {
         navigate(`/inventory/${id}`);
     }
-    if (products) {
-        <Loading></Loading>
+    if (products.length === 0) {
+        return <Loading></Loading>
     }
     return (
         <div>

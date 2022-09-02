@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from '../Shared/Banner/Banner';
+import Loading from '../Shared/Loading/Loading';
 import PageTitle from '../Shared/PageTitle/PageTitle';
 import ComingSoon from './ComingSoon/ComingSoon';
 import InventoryItems from './InventoryItems/InventoryItems';

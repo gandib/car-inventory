@@ -1,9 +1,13 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import useInventory from '../../../hooks/useInventory';
+import Loading from '../Loading/Loading';
 
 const Banner = () => {
     const [products, setProducts] = useInventory([]);
+    if (products.length === 0) {
+        return <Loading></Loading>
+    }
     return (
         <div className='mt-2 mb-5'>
             <Carousel>

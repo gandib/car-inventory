@@ -13,8 +13,12 @@ const useToken = user => {
             }
         }
         getToken();
+
+
     }, [user]);
+
     return [token];
+
 }
 
 export default useToken;
