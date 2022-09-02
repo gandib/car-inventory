@@ -10,22 +10,24 @@ import Button from 'react-bootstrap/Button';
 
 const DisplayInventory = () => {
     const { inventoryId } = useParams();
-    const [quantity, setQuantity] = useState();
-    const [increaseQuantity, setIncreaseQuantity] = useState();
     const [product, setProduct] = useState({});
+    const [quantities, setQuantities] = useState();
+    const [increaseQuantity, setIncreaseQuantity] = useState();
+
     useEffect(() => {
         const url = `https://calm-forest-65142.herokuapp.com/inventory/${inventoryId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));
-    }, [quantity, increaseQuantity]);
+    }, [quantities, increaseQuantity]);
 
     const handleDelivered = () => {
         let quantity = product?.quantity;
         if (quantity >= 1) {
             quantity = product?.quantity - 1;
-            setQuantity(quantity);
+            setQuantities(quantity);
         }
+
         const updatedInventory = { quantity: quantity };
         const url = `https://calm-forest-65142.herokuapp.com/inventory/${inventoryId}`;
         fetch(url, {
@@ -37,8 +39,8 @@ const DisplayInventory = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setQuantities(data.modifiedCount);
                 alert('Delivered successfully');
-
             });
     }
 
@@ -60,8 +62,8 @@ const DisplayInventory = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setIncreaseQuantity(data.matchedCount);
                 alert('Delivered successfully');
-
             });
         event.target.reset();
     }
