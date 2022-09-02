@@ -3,7 +3,7 @@ import './DisplayInventory.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -19,7 +19,7 @@ const DisplayInventory = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));
-    }, [quantities, increaseQuantity]);
+    }, [quantities, increaseQuantity, inventoryId]);
 
     const handleDelivered = () => {
         let quantity = product?.quantity;
@@ -78,6 +78,7 @@ const DisplayInventory = () => {
                     <Card.Body>
                         <Card.Title>{product.name}</Card.Title>
                         <Card.Text>{product.description}</Card.Text>
+                        <Card.Text>Id: {product._id}</Card.Text>
                         <Card.Text>Price: ${product.price}</Card.Text>
                         <Card.Text>Quantity: {product.quantity}</Card.Text>
                         <Card.Text>Supplier: {product.supplier}</Card.Text>
@@ -87,15 +88,21 @@ const DisplayInventory = () => {
                     </Card.Footer>
                 </Card>
             </div>
-            <Form onSubmit={handleIncreaseQuantity}>
-                <Form.Group className="mb-3" controlId="formBasicText">
-                    <Form.Label>Restock the items</Form.Label>
-                    <Form.Control type="number" name="quantity" placeholder="Enter Quantity" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Update Quantity
-                </Button>
-            </Form>
+            <div>
+                <Form onSubmit={handleIncreaseQuantity}>
+                    <Form.Group className="mb-3" controlId="formBasicText">
+                        <Form.Label>Restock the items</Form.Label>
+                        <Form.Control type="number" name="quantity" placeholder="Enter Quantity" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Update Quantity
+                    </Button>
+                </Form>
+                <div className='mt-5 mb-5 manageInventory-btn'>
+                    <Link to='/manageinventories'>Manage Inventories</Link>
+                </div>
+            </div>
+
         </div>
     );
 };
