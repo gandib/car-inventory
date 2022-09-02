@@ -13,12 +13,6 @@ const ManageInventories = () => {
     const [products, setProducts] = useInventory([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(`https://calm-forest-65142.herokuapp.com/inventory?page=${page}&size=${size}`)
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, [page, size, products]);
-
 
     useEffect(() => {
         fetch('https://calm-forest-65142.herokuapp.com/inventoryCount')
@@ -29,6 +23,16 @@ const ManageInventories = () => {
                 setPageCount(pages);
             });
     }, [size]);
+
+
+    useEffect(() => {
+        fetch(`https://calm-forest-65142.herokuapp.com/inventory?page=${page}&size=${size}`)
+            .then(res => res.json())
+            .then(data => setProducts(data));
+    }, [page, size]);
+
+
+
 
 
     const handleDeleteItem = id => {

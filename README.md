@@ -1,6 +1,24 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [Live Server Link](https://car-inventory-bfad1.web.app/)
+
+# [Client Side Private Repo Link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-gandib)
+https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-gandib
+
+
+# [Server Side Private Repo Link](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-gandib)
+https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-gandib
+
+
+# Using Bullet Points for Describing My Project
+* Home page contains a carousel, inventory items, coming soon products, team member and a footer.
+* Using React Bootstrap
+* Using React Router
+* Using React Firebase Hooks
+* Using React Toastify
+* Using MongoDB Database
+* Using Heroku To Host MongoDB Database
+* Using React Form Hooks, and so on.
 
 ## Available Scripts
 
